@@ -1,0 +1,79 @@
+$primary: #5D5FEF;
+$secondary: #EF5DA8;
+$success: #82F178;
+$error: #EF775D;
+$black: #000;
+$white: #FFF;
+
+@mixin bg-color($color: $white, $text: $primary) {
+  background-color: $color;
+  color: $text;
+  &:hover {
+    background-color: darken($color, 10);
+  }
+  &:focus {
+    outline: 1px solid $text;
+  }
+}
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center 
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  @include center;
+  transition: all 0.3s ease;
+
+  padding: 1rem;
+  border-radius: 8px;
+  
+  width: 200px;
+  max-height: 60px;
+  
+  color: $white;
+  font-weight: bold;  
+  
+  $color: $white;  
+  @include bg-color();
+}
+
+.button-primary {
+  $color: $primary; 
+  @include bg-color($color, $white);   
+}
+.button-secondary {
+  $color: $secondary;    
+  @include bg-color($color, $white);   
+}
+.button-success {
+  $color: $success;    
+  @include bg-color($color, $white);   
+}
+.button-error {
+  $color: $error;    
+  @include bg-color($color, $white);   
+}
+.button-outline {
+  border: 2px solid $primary;
+}
+.button-loading {
+  padding: 0;
+  cursor: not-allowed;
+  border: 2px solid $primary;
+
+  svg {
+    height: 60px;
+    border-radius: inherit;
+    color: $primary;
+    fill: $primary;
+  }
+}
+
+.button-icon {
+  width: fit-content;
+  border-radius: 50%;
+  border: 1px solid lighten($primary, 20);
+}
